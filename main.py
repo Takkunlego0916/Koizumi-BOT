@@ -48,7 +48,7 @@ def koizumi_reply(text: str) -> str:
             },
             {"role": "user", "content": text}
         ],
-        max_tokens=60,
+        max_tokens=120,
         temperature=0.7
     )
     return res.choices[0].message.content

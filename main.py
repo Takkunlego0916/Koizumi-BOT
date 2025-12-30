@@ -3,6 +3,20 @@ from discord import app_commands
 from discord.ext import commands
 from openai import OpenAI
 import os
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "I'm alive!"
+
+def run():
+    port = int(os.environ.get("PORT", 10000))  # Renderが自動割り当て
+    app.run(host='0.0.0.0', port=port)
+
+Thread(target=run).start()
 
 # ===== 環境変数 =====
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
